@@ -1,11 +1,372 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Kedai Moi — pilih menu favorit, pesan dari meja, dan pantau pesanan. Pembayaran langsung di kasir."
+    />
+    <meta name="theme-color" content="#bd2929" />
+    <title>Beranda — Kedai Moi</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-halaman="index">
+    <a class="skip-link" href="#utama">Lewati ke konten</a>
+    <!-- NAVBAR -->
+    <!-- [TEKNOLOGI: SEMANTIC HTML] Header dan nav digunakan konsisten pada enam halaman. -->
+    <header class="navbar">
+      <div class="wadah">
+        <a class="merek" href="index.html" aria-label="Kedai Moi, beranda"
+          ><span class="logo"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 14a5 5 0 0 1-1-10 6 6 0 0 1 12 0 5 5 0 0 1-1 10v6H7v-6Zm0 3h10"
+              /></svg></span
+          ><span>kedai moi</span></a
+        >
+        <nav class="nav-links" id="navigasi" aria-label="Navigasi utama">
+          <a href="index.html" class="aktif" aria-current="page">Beranda</a
+          ><a href="pesan.html">Menu</a><a href="status.html">Status Pesanan</a
+          ><a href="dashboard.html" class="admin-link">Kasir</a>
+        </nav>
+        <div class="nav-kanan">
+          <a
+            aria-label="Pesan sekarang"
+            class="tombol tombol-kuning pesan-cepat"
+            href="pesan.html"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 8V5a3 3 0 0 1 6 0v3" /></svg
+            ><span>Pesan sekarang</span></a
+          >
+          <button
+            class="hamburger"
+            id="buka-navigasi"
+            aria-expanded="false"
+            aria-controls="navigasi"
+            aria-label="Buka navigasi"
+          >
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- ISI UTAMA -->
+    <!-- [TEKNOLOGI: SEMANTIC HTML] Main memuat section, article, form, serta aside sesuai kebutuhan halaman. -->
+    <main id="utama">
+      <!-- HERO -->
+      <!-- [TEKNOLOGI: SEMANTIC HTML] Carousel berisi foto, judul, serta tautan ke pemesanan. -->
+      <section
+        class="carousel"
+        id="carousel-beranda"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Pilihan menu Kedai Moi"
+        tabindex="0"
+      >
+        <h1 id="hero-judul" class="sr-only">
+          Kedai Moi — makan enak tanpa antre
+        </h1>
+        <article
+          id="slide-1"
+          class="carousel-slide"
+          aria-roledescription="slide"
+          aria-label="1 dari 3"
+        >
+          <img
+            class="carousel-foto"
+            src="img/menu/hero-nasi.png"
+            alt="Nasi goreng dengan telur, sambal, dan irisan timun."
+            width="1672"
+            height="941"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="carousel-tirai"></div>
+          <div class="carousel-isi wadah">
+            <div class="carousel-copy">
+              <h2>MAKAN ENAK.<br />TANPA ANTRE.</h2>
+              <p>Pilih favoritmu. Kami antar ke meja.</p>
+              <a class="tombol tombol-kuning" href="pesan.html"
+                >Pesan sekarang
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14m-5-5 5 5-5 5" /></svg
+              ></a>
+            </div>
+          </div>
+        </article>
+        <article
+          id="slide-2"
+          class="carousel-slide"
+          aria-roledescription="slide"
+          aria-label="2 dari 3"
+          hidden
+        >
+          <img
+            class="carousel-foto"
+            src="img/menu/hero-minuman.png"
+            alt="Kopi susu dingin dan es jeruk segar."
+            width="1672"
+            height="941"
+            fetchpriority="low"
+            decoding="async"
+          />
+          <div class="carousel-tirai"></div>
+          <div class="carousel-isi wadah">
+            <div class="carousel-copy">
+              <h2>SEGARNYA,<br />BIKIN BETAH.</h2>
+              <p>Kopi susu atau es jeruk? Pilihan ada di kamu.</p>
+              <a class="tombol tombol-kuning" href="pesan.html"
+                >Pilih minuman
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14m-5-5 5 5-5 5" /></svg
+              ></a>
+            </div>
+          </div>
+        </article>
+        <article
+          id="slide-3"
+          class="carousel-slide"
+          aria-roledescription="slide"
+          aria-label="3 dari 3"
+          hidden
+        >
+          <img
+            class="carousel-foto"
+            src="img/menu/hero-cemilan.png"
+            alt="Kentang goreng renyah dan dimsum ayam."
+            width="1672"
+            height="941"
+            fetchpriority="low"
+            decoding="async"
+          />
+          <div class="carousel-tirai"></div>
+          <div class="carousel-isi wadah">
+            <div class="carousel-copy">
+              <h2>TEMAN SANTAI.<br />PAS DI HATI.</h2>
+              <p>Cemilan hangat untuk menemani obrolan.</p>
+              <a class="tombol tombol-kuning" href="pesan.html"
+                >Lihat menu
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14m-5-5 5 5-5 5" /></svg
+              ></a>
+            </div>
+          </div>
+        </article>
+        <div class="carousel-controls wadah">
+          <div class="carousel-posisi">
+            <span id="nomor-slide">01 / 03</span>
+            <div class="carousel-titik-grup" aria-label="Pilih slide">
+              <button
+                type="button"
+                class="carousel-titik aktif"
+                data-slide="0"
+                aria-label="Tampilkan slide 1"
+                aria-controls="slide-1"
+                aria-pressed="true"
+              ></button
+              ><button
+                type="button"
+                class="carousel-titik"
+                data-slide="1"
+                aria-label="Tampilkan slide 2"
+                aria-controls="slide-2"
+                aria-pressed="false"
+              ></button
+              ><button
+                type="button"
+                class="carousel-titik"
+                data-slide="2"
+                aria-label="Tampilkan slide 3"
+                aria-controls="slide-3"
+                aria-pressed="false"
+              ></button>
+            </div>
+          </div>
+          <div class="carousel-panah">
+            <button
+              type="button"
+              id="slide-sebelumnya"
+              class="kontrol-carousel"
+              aria-label="Slide sebelumnya"
+            >
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m14 6-6 6 6 6" />
+              </svg></button
+            ><button
+              type="button"
+              id="slide-berikutnya"
+              class="kontrol-carousel"
+              aria-label="Slide berikutnya"
+            >
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m10 6 6 6-6 6" />
+              </svg></button
+            ><button
+              type="button"
+              id="putar-carousel"
+              class="kontrol-carousel"
+              aria-label="Jeda carousel"
+            >
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 5v14M15 5v14" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <p
+          class="sr-only"
+          id="status-carousel"
+          aria-live="off"
+          aria-atomic="true"
+        >
+          Slide 1 dari 3.
+        </p>
+      </section>
+      <div class="info-pemesanan">
+        <div class="wadah">
+          <p>
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+            </svg>
+            Pembayaran dilakukan langsung di kasir.
+          </p>
+          <a href="#cara-pesan"
+            >Cara memesan
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14m-5-5 5 5-5 5" /></svg
+          ></a>
+        </div>
+      </div>
+      <!-- KEUNGGULAN KEDAI -->
+
+      <!-- MENU UNGGULAN: dirender dari Local Storage -->
+      <section
+        class="bagian wadah menu-beranda"
+        aria-labelledby="unggulan-judul"
+      >
+        <div class="judul-baris">
+          <div>
+            <h2 id="unggulan-judul">MENU FAVORIT.</h2>
+          </div>
+          <a class="tautan" href="pesan.html"
+            >Lihat semua menu
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14m-5-5 5 5-5 5" /></svg
+          ></a>
+        </div>
+        <div class="grid-unggulan" id="menu-unggulan"></div>
+      </section>
+      <!-- EMPAT LANGKAH PEMESANAN -->
+      <div class="langkah-latar">
+        <section
+          class="langkah-area wadah"
+          id="cara-pesan"
+          aria-labelledby="langkah-judul"
+        >
+          <div class="judul-baris">
+            <div>
+              <h2 id="langkah-judul">CARA MEMESAN.</h2>
+            </div>
+          </div>
+          <div class="grid-langkah">
+            <article class="langkah">
+              <span class="nomor-langkah">01</span>
+              <div class="langkah-icon">
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M4 21v-3a8 8 0 0 1 16 0v3" />
+                </svg>
+              </div>
+              <h3>Isi nama &amp; meja</h3>
+              <p>Lengkapi detail pemesan.</p>
+            </article>
+            <article class="langkah">
+              <span class="nomor-langkah">02</span>
+              <div class="langkah-icon">
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 7h14l1 14H4L5 7Z" />
+                  <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+                </svg>
+              </div>
+              <h3>Pilih menu</h3>
+              <p>Tambahkan ke keranjang.</p>
+            </article>
+            <article class="langkah">
+              <span class="nomor-langkah">03</span>
+              <div class="langkah-icon">
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="15" rx="3" />
+                  <path d="M3 7V5a2 2 0 0 1 2-2h12v2m4 6h-6v5h6" />
+                </svg>
+              </div>
+              <h3>Bayar di kasir</h3>
+              <p>Setelah mengirim pesanan.</p>
+            </article>
+            <article class="langkah">
+              <span class="nomor-langkah">04</span>
+              <div class="langkah-icon">
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M7 14a5 5 0 0 1-1-10 6 6 0 0 1 12 0 5 5 0 0 1-1 10v6H7v-6Zm0 3h10"
+                  />
+                </svg>
+              </div>
+              <h3>Pesanan diantar</h3>
+              <p>Pantau status sambil menunggu.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="wadah"><p>© 2026 Kedai Moi</p></div>
+    </footer>
+    <!-- DIALOG KONFIRMASI DAN NOTIFIKASI -->
+    <dialog
+      id="modal-konfirmasi"
+      aria-labelledby="judul-konfirmasi"
+      aria-describedby="teks-konfirmasi"
+    >
+      <div class="modal-isi">
+        <div class="modal-ikon">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14l1 14H4L5 7Z" />
+            <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+          </svg>
+        </div>
+        <h2 id="judul-konfirmasi">Konfirmasi</h2>
+        <p id="teks-konfirmasi" class="modal-teks"></p>
+        <div class="modal-aksi">
+          <button class="tombol sekunder" id="batal-konfirmasi">Kembali</button
+          ><button class="tombol" id="setuju-konfirmasi">Ya, lanjutkan</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div
+      id="toast-area"
+      class="toast-area"
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+    <noscript
+      ><p class="catatan">
+        Aktifkan JavaScript agar pemesanan dan pengelolaan data dapat digunakan.
+      </p></noscript
+    >
+    <!-- Script dasar dimuat lebih dahulu, kemudian script halaman. -->
+    <script src="js/storage.js"></script>
+    <script src="js/validasi.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/beranda.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/tampilan.js"></script>
+  </body>
 </html>
