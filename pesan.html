@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Kedai Moi — pilih menu favorit, pesan dari meja, dan pantau pesanan. Pembayaran langsung di kasir."
+    />
+    <meta name="theme-color" content="#bd2929" />
+    <title>Pesan Menu — Kedai Moi</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-halaman="pesan">
+    <a class="skip-link" href="#utama">Lewati ke konten</a>
+    <header class="navbar">
+      <div class="wadah">
+        <a class="merek" href="index.html" aria-label="Kedai Moi, beranda"
+          ><span class="logo"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 14a5 5 0 0 1-1-10 6 6 0 0 1 12 0 5 5 0 0 1-1 10v6H7v-6Zm0 3h10"
+              /></svg></span
+          ><span>kedai moi</span></a
+        >
+        <nav class="nav-links" id="navigasi" aria-label="Navigasi utama">
+          <a href="index.html">Beranda</a
+          ><a href="pesan.html" class="aktif" aria-current="page">Menu</a
+          ><a href="status.html">Status Pesanan</a
+          ><a href="dashboard.html" class="admin-link">Kasir</a>
+        </nav>
+        <div class="nav-kanan">
+          <a aria-label="Pesan sekarang" class="tombol tombol-kuning pesan-cepat" href="pesan.html"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 8V5a3 3 0 0 1 6 0v3" /></svg
+            ><span>Pesan sekarang</span></a
+          >
+          <button
+            class="hamburger"
+            id="buka-navigasi"
+            aria-expanded="false"
+            aria-controls="navigasi"
+            aria-label="Buka navigasi"
+          >
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="utama" class="wadah halaman pesan-page">
+      <div class="kepala-halaman">
+        <h1>Pesan menu</h1>
+      </div>
+      <section id="pesan-sukses" class="sukses-panel" hidden aria-live="polite"></section>
+      <div class="layout-pesan">
+        <div>
+          <section class="panel identitas" aria-labelledby="identitas-judul">
+            <div class="judul-icon">
+              <h2 id="identitas-judul">Detail pemesan</h2>
+            </div>
+            <form id="form-pelanggan" novalidate>
+              <div class="form-dua">
+                <div class="field">
+                  <label for="nama">Nama pemesan</label
+                  ><input
+                    id="nama"
+                    name="nama"
+                    type="text"
+                    placeholder="Contoh: Budi Santoso"
+                    autocomplete="name"
+                    required
+                    maxlength="80"
+                    aria-describedby="error-nama"
+                  /><span class="error" id="error-nama"></span>
+                </div>
+                <div class="field">
+                  <label for="no-meja">Nomor meja</label
+                  ><input
+                    id="no-meja"
+                    name="no-meja"
+                    type="number"
+                    placeholder="1–50"
+                    min="1"
+                    max="50"
+                    step="1"
+                    required
+                    aria-describedby="error-no-meja"
+                  /><span class="error" id="error-no-meja"></span>
+                </div>
+              </div>
+            </form>
+          </section>
+          <section aria-labelledby="pilih-menu-judul">
+            <h2 id="pilih-menu-judul" class="sr-only">Pilih menu</h2>
+            <div class="input-ikon">
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" /></svg
+              ><label class="sr-only" for="cari-menu">Cari menu favoritmu...</label
+              ><input id="cari-menu" type="search" placeholder="Cari menu" autocomplete="off" />
+            </div>
+            <div class="filter-kategori" aria-label="Kategori menu">
+              <button type="button" data-kategori="Semua" class="aktif" aria-pressed="true">
+                Semua</button
+              ><button type="button" data-kategori="Makanan" aria-pressed="false">Makanan</button
+              ><button type="button" data-kategori="Minuman" aria-pressed="false">Minuman</button
+              ><button type="button" data-kategori="Cemilan" aria-pressed="false">Cemilan</button>
+            </div>
+            <p class="jumlah-hasil sr-only" id="jumlah-menu" aria-live="polite"></p>
+            <div id="grid-menu" class="grid-menu"></div>
+          </section>
+        </div>
+        <aside id="keranjang" class="panel keranjang" aria-label="Keranjang pesanan">
+          <div class="judul-icon">
+            <h2>Keranjang</h2>
+            <span class="jumlah-badge" id="jumlah-keranjang">0</span>
+          </div>
+          <div id="isi-keranjang"></div>
+          <span class="error" id="error-keranjang" role="alert"></span>
+          <div class="field">
+            <label for="catatan">Catatan (opsional)</label
+            ><textarea
+              id="catatan"
+              placeholder="Contoh: tidak pedas"
+              maxlength="100"
+              aria-describedby="error-catatan"
+            ></textarea
+            ><span class="error" id="error-catatan"></span>
+            <div class="kecil redup" id="hitung-catatan">0/100 karakter</div>
+          </div>
+          <div class="ringkasan">
+            <div hidden class="baris-total">
+              <span class="redup">Subtotal</span><span id="subtotal">Rp0</span>
+            </div>
+
+            <div class="baris-total total"><span>Total</span><strong id="total">Rp0</strong></div>
+          </div>
+          <button type="button" class="tombol penuh" id="kirim-pesanan">
+            Kirim Pesanan
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14m-5-5 5 5-5 5" />
+            </svg>
+          </button>
+          <div class="catatan">
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="15" rx="3" />
+              <path d="M3 7V5a2 2 0 0 1 2-2h12v2m4 6h-6v5h6" /></svg
+            ><span>Pembayaran langsung di kasir.</span>
+          </div>
+        </aside>
+      </div>
+      <a href="#keranjang" class="keranjang-melayang"
+        ><span
+          ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14l1 14H4L5 7Z" />
+            <path d="M9 8V5a3 3 0 0 1 6 0v3" /></svg
+          >Lihat keranjang (<span id="mobile-jumlah">0</span>)</span
+        ><strong id="mobile-total">Rp0</strong></a
+      >
+    </main>
+    <footer class="footer">
+      <div class="wadah"><p>© 2026 Kedai Moi</p></div>
+    </footer>
+    <dialog
+      id="modal-konfirmasi"
+      aria-labelledby="judul-konfirmasi"
+      aria-describedby="teks-konfirmasi"
+    >
+      <div class="modal-isi">
+        <div class="modal-ikon">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14l1 14H4L5 7Z" />
+            <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+          </svg>
+        </div>
+        <h2 id="judul-konfirmasi">Konfirmasi</h2>
+        <p id="teks-konfirmasi" class="modal-teks"></p>
+        <div class="modal-aksi">
+          <button class="tombol sekunder" id="batal-konfirmasi">Kembali</button
+          ><button class="tombol" id="setuju-konfirmasi">Ya, lanjutkan</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="toast-area" class="toast-area" aria-live="polite" aria-atomic="false"></div>
+    <noscript
+      ><p class="catatan">
+        Test.
+      </p></noscript
+    >
+    <script src="js/storage.js"></script>
+    <script src="js/validasi.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/pesan.js"></script>
+    <script src="js/tampilan.js"></script>
+  </body>
+</html>
