@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Kedai Moi — pilih menu favorit, pesan dari meja, dan pantau pesanan. Pembayaran langsung di kasir."
+    />
+    <meta name="theme-color" content="#bd2929" />
+    <title>Kelola Pesanan — Kedai Moi</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-halaman="pesanan">
+    <a class="skip-link" href="#utama">Lewati ke konten</a>
+    <header class="navbar">
+      <div class="wadah">
+        <a class="merek" href="index.html" aria-label="Kedai Moi, beranda"
+          ><span class="logo"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 14a5 5 0 0 1-1-10 6 6 0 0 1 12 0 5 5 0 0 1-1 10v6H7v-6Zm0 3h10"
+              /></svg></span
+          ><span>kedai moi</span></a
+        >
+        <nav class="nav-links" id="navigasi" aria-label="Navigasi utama">
+          <a href="index.html">Beranda</a><a href="pesan.html">Menu</a
+          ><a href="status.html">Status Pesanan</a
+          ><a href="dashboard.html" class="admin-link aktif">Kasir</a>
+        </nav>
+        <div class="nav-kanan">
+          <a aria-label="Pesan sekarang" class="tombol tombol-kuning pesan-cepat" href="pesan.html"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 8V5a3 3 0 0 1 6 0v3" /></svg
+            ><span>Pesan sekarang</span></a
+          >
+          <button
+            class="hamburger"
+            id="buka-navigasi"
+            aria-expanded="false"
+            aria-controls="navigasi"
+            aria-label="Buka navigasi"
+          >
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="utama" class="wadah halaman">
+      <section id="login-admin" class="panel login-wrap">
+        <div class="kotak-icon">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="11" rx="2" />
+            <path d="M8 10V6a4 4 0 0 1 8 0v4m-4 4v3" />
+          </svg>
+        </div>
+
+        <h1>Masuk kasir</h1>
+
+        <form id="form-login" novalidate>
+          <div class="field">
+            <label for="pin">PIN admin</label
+            ><input
+              id="pin"
+              name="pin"
+              type="password"
+              inputmode="numeric"
+              pattern="[0-9]{4}"
+              maxlength="4"
+              autocomplete="current-password"
+              required
+              placeholder="••••"
+              aria-describedby="error-pin"
+            /><span class="error" id="error-pin"></span>
+          </div>
+          <button class="tombol penuh" type="submit">Masuk</button>
+        </form>
+      </section>
+      <div id="konten-admin" hidden>
+        <nav class="admin-nav" aria-label="Navigasi admin">
+          <a href="dashboard.html">Dashboard</a><a href="menu-admin.html">Kelola Menu</a
+          ><a href="pesanan.html" class="aktif" aria-current="page">Kelola Pesanan</a
+          ><a href="index.html" id="keluar-admin">Keluar ↗</a>
+        </nav>
+        <div class="admin-judul">
+          <div class="kepala-halaman">
+            <h1>Kelola pesanan</h1>
+          </div>
+          <button class="tombol sekunder" id="export-pesanan">
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4" />
+            </svg>
+            Export CSV
+          </button>
+        </div>
+        <section aria-label="Daftar pesanan">
+          <div class="toolbar">
+            <div class="input-ikon">
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" /></svg
+              ><label class="sr-only" for="cari-admin-pesanan"
+                >Cari nama, meja, atau nomor pesanan...</label
+              ><input
+                id="cari-admin-pesanan"
+                type="search"
+                placeholder="Cari nama, meja, atau nomor pesanan..."
+                autocomplete="off"
+              />
+            </div>
+            <label class="sr-only" for="filter-status">Status pesanan</label
+            ><select id="filter-status" aria-label="Status pesanan">
+              <option value="Semua">Semua status</option>
+              <option value="Baru">Baru</option>
+              <option value="Diproses">Diproses</option>
+              <option value="Diantar">Diantar</option>
+              <option value="Selesai">Selesai</option>
+              <option value="Dibatalkan">Dibatalkan</option>
+            </select>
+          </div>
+          <p id="jumlah-admin-pesanan" class="jumlah-hasil" aria-live="polite"></p>
+          <div class="tabel-bungkus" tabindex="0" role="region" aria-label="Tabel dapat digeser">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">No / Waktu</th>
+                  <th scope="col">Pelanggan</th>
+                  <th scope="col">Meja</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Bayar</th>
+                  <th scope="col">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-pesanan"></tbody>
+            </table>
+          </div>
+        </section>
+        <div class="catatan" style="margin-top: 20px">
+          Tandai “Sudah Dibayar” setelah menerima pembayaran di kasir.
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wadah"><p>© 2026 Kedai Moi</p></div>
+    </footer>
+    <dialog
+      id="modal-konfirmasi"
+      aria-labelledby="judul-konfirmasi"
+      aria-describedby="teks-konfirmasi"
+    >
+      <div class="modal-isi">
+        <div class="modal-ikon">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14l1 14H4L5 7Z" />
+            <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+          </svg>
+        </div>
+        <h2 id="judul-konfirmasi">Konfirmasi</h2>
+        <p id="teks-konfirmasi" class="modal-teks"></p>
+        <div class="modal-aksi">
+          <button class="tombol sekunder" id="batal-konfirmasi">Kembali</button
+          ><button class="tombol" id="setuju-konfirmasi">Ya, lanjutkan</button>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="modal-pesanan" aria-labelledby="judul-modal-pesanan">
+      <div class="modal-isi">
+        <div class="modal-kepala">
+          <h2 id="judul-modal-pesanan">Edit Pesanan</h2>
+          <button class="tutup-modal" data-tutup="modal-pesanan" aria-label="Tutup">×</button>
+        </div>
+        <form id="form-edit-pesanan" novalidate>
+          <div class="form-dua">
+            <div class="field">
+              <label for="edit-nama">Nama pelanggan</label
+              ><input
+                id="edit-nama"
+                name="edit-nama"
+                type="text"
+                required
+                maxlength="80"
+                aria-describedby="error-edit-nama"
+              /><span class="error" id="error-edit-nama"></span>
+            </div>
+            <div class="field">
+              <label for="edit-meja">Nomor meja</label
+              ><input
+                id="edit-meja"
+                name="edit-meja"
+                type="number"
+                min="1"
+                max="50"
+                step="1"
+                required
+                aria-describedby="error-edit-meja"
+              /><span class="error" id="error-edit-meja"></span>
+            </div>
+          </div>
+          <label class="label">Item pesanan</label>
+          <div id="edit-items"></div>
+          <span id="error-edit-items" class="error" role="alert"></span>
+          <div class="edit-tambah">
+            <label for="edit-pilih-menu" class="sr-only">Menu tambahan</label
+            ><select id="edit-pilih-menu"></select
+            ><button type="button" id="edit-tambah-item" class="tombol sekunder">+ Tambah</button>
+          </div>
+          <div class="field" style="margin-top: 20px">
+            <label for="edit-catatan">Catatan <span>· maksimal 100 karakter</span></label
+            ><textarea
+              id="edit-catatan"
+              maxlength="100"
+              aria-describedby="error-edit-catatan"
+            ></textarea
+            ><span class="error" id="error-edit-catatan"></span>
+          </div>
+          <div class="baris-total total"><span>Total</span><strong id="edit-total"></strong></div>
+          <div class="modal-aksi">
+            <button class="tombol sekunder" type="button" data-tutup="modal-pesanan">Batal</button
+            ><button class="tombol" type="submit">Simpan Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+    <div id="toast-area" class="toast-area" aria-live="polite" aria-atomic="false"></div>
+    <noscript
+      ><p class="catatan">
+        Aktifkan JavaScript agar pemesanan dan pengelolaan data dapat digunakan.
+      </p></noscript
+    >
+    <script src="js/storage.js"></script>
+    <script src="js/validasi.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/pesanan.js"></script>
+    <script src="js/tampilan.js"></script>
+  </body>
+</html>
