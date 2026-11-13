@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Kedai Moi — pilih menu favorit, pesan dari meja, dan pantau pesanan. Pembayaran langsung di kasir."
+    />
+    <meta name="theme-color" content="#bd2929" />
+    <title>Status Pesanan — Kedai Moi</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-halaman="status">
+    <a class="skip-link" href="#utama">Lewati ke konten</a>
+    <header class="navbar">
+      <div class="wadah">
+        <a class="merek" href="index.html" aria-label="Kedai Moi, beranda"
+          ><span class="logo"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 14a5 5 0 0 1-1-10 6 6 0 0 1 12 0 5 5 0 0 1-1 10v6H7v-6Zm0 3h10"
+              /></svg></span
+          ><span>kedai moi</span></a
+        >
+        <nav class="nav-links" id="navigasi" aria-label="Navigasi utama">
+          <a href="index.html">Beranda</a><a href="pesan.html">Menu</a
+          ><a href="status.html" class="aktif" aria-current="page">Status Pesanan</a
+          ><a href="dashboard.html" class="admin-link">Kasir</a>
+        </nav>
+        <div class="nav-kanan">
+          <a aria-label="Pesan sekarang" class="tombol tombol-kuning pesan-cepat" href="pesan.html"
+            ><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 8V5a3 3 0 0 1 6 0v3" /></svg
+            ><span>Pesan sekarang</span></a
+          >
+          <button
+            class="hamburger"
+            id="buka-navigasi"
+            aria-expanded="false"
+            aria-controls="navigasi"
+            aria-label="Buka navigasi"
+          >
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="utama" class="wadah halaman">
+      <div class="status-layout">
+        <div class="kepala-halaman">
+          <h1>Status pesanan</h1>
+        </div>
+        <section class="panel cari-status">
+          <form id="form-cari-status">
+            <div class="input-ikon">
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" /></svg
+              ><label class="sr-only" for="cari-pesanan">Ketik nama atau nomor meja...</label
+              ><input
+                id="cari-pesanan"
+                type="search"
+                placeholder="Nama, meja, atau nomor pesanan"
+                autocomplete="off"
+              />
+            </div>
+            <button class="tombol" type="submit">
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" />
+              </svg>
+              Cari Pesanan
+            </button>
+          </form>
+        </section>
+        <section
+          id="daftar-status"
+          aria-live="polite"
+          aria-label="Hasil pencarian pesanan"
+        ></section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wadah"><p>© 2026 Kedai Moi</p></div>
+    </footer>
+    <dialog
+      id="modal-konfirmasi"
+      aria-labelledby="judul-konfirmasi"
+      aria-describedby="teks-konfirmasi"
+    >
+      <div class="modal-isi">
+        <div class="modal-ikon">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14l1 14H4L5 7Z" />
+            <path d="M9 8V5a3 3 0 0 1 6 0v3" />
+          </svg>
+        </div>
+        <h2 id="judul-konfirmasi">Konfirmasi</h2>
+        <p id="teks-konfirmasi" class="modal-teks"></p>
+        <div class="modal-aksi">
+          <button class="tombol sekunder" id="batal-konfirmasi">Kembali</button
+          ><button class="tombol" id="setuju-konfirmasi">Ya, lanjutkan</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="toast-area" class="toast-area" aria-live="polite" aria-atomic="false"></div>
+    <noscript
+      ><p class="catatan">
+        Test.
+      </p></noscript
+    >
+    <script src="js/storage.js"></script>
+    <script src="js/validasi.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/status.js"></script>
+    <script src="js/tampilan.js"></script>
+  </body>
+</html>
