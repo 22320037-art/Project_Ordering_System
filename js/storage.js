@@ -60,11 +60,6 @@ function buatId(daftar) {
 function hitungTotal(items) {
   return items.reduce(function (total, item) { return total + item.harga * item.jumlah; }, 0);
 }
-// FUNGSI : adminAktif
-// TUGAS  : memeriksa login demo
-// INPUT  : tidak ada.
-// HASIL  : boolean, false ketika storage tidak dapat diakses.
-// ------------------------------------------------
 function adminAktif() {
   try {
     return localStorage.getItem(KUNCI_ADMIN) === 'true'; 
